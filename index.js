@@ -13,13 +13,20 @@ const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const animeListEl = document.getElementById("anime-list")
 
-addButtonEl.addEventListener("click", function() {
-    let inputValue = inputFieldEl.value
-    
-    push(animeListInDB, inputValue)
-    
-    clearInputFieldEl()
-})
+    addButtonEl.addEventListener("click", function() {
+        let inputValue = inputFieldEl.value.trim();
+
+        if(inputValue === ""){
+            alert("Enter an Anime");
+            return false;
+        }
+        
+        push(animeListInDB, inputValue)
+        
+        clearInputFieldEl();
+    })
+
+
 
 onValue(animeListInDB, function(snapshot) {
     if (snapshot.exists()) {
